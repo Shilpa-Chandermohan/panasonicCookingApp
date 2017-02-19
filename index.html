@@ -1,0 +1,66 @@
+<!--  Copyright (C) 2014 Panasonic Corporation. All Rights Reserved. -->
+<!-- // File Name: index.html -->
+<!-- // File Created Date: 28-Apr-2014 -->
+<!-- // Release Date: 10-Jun-2014  -->
+<!-- // Release Version: 0.3 -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Panasonic Cooking</title>
+		<link rel="stylesheet" type="text/css" href="css/cooking_main.css">
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			  ga('create', 'UA-51501580-1', 'cooking.panasonic.asia');
+			  ga('send', 'pageview');				
+				
+		var splash = {total : 0};
+		splash.loadImage = function(){
+		  try {
+			splash.total++;
+			if(splash.total===3){
+			  splash.splashScreen = document.getElementById("loading");
+			 
+			  splash.splashScreen.className = 'loadingsplash loadingOn splashanim';
+			}
+		  } catch (e) {}
+		}
+		</script>
+	</head>
+	<body>		
+		<div id="buffer"></div>
+		<div id="splashScreen">
+			<div id="splash">
+			  <img class = "hide" src="images/dots.png" onload="splash.loadImage()"></img>
+			  <div id="splash_gradient"></div>
+			  <img id="splash_logo" src="images/logo.png" onload="splash.loadImage()"></img>
+			  <img src="images/loading.png" class = "hide" onload="splash.loadImage()"></img>
+			</div>
+		</div>
+		<div id="wrapper" class="addBg">
+			<section id="topSection" class = "topSection"></section>			
+			<section id="innerSection">
+				<section id="menuSection"></section>
+				<section id="contentSection" class = "contentSection"></section>
+			</section>
+			<section id ="playerWrapper">
+				<div id = "player"></div>
+			</section>
+		</div>
+		<div id="loading" class="loadingsplash loadingOff"></div>
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/cooking_main.js"></script>
+		<script src="js/cooking_detail.js"></script>		
+		<script src="js/cooking_keyboard.js"></script>
+		<script src="js/cooking_player.js"></script>
+		<script type="text/javascript">
+			// Entry Point of the HTML5 application
+			window.onload = function() {
+				main.splashScreen.start();
+			};
+		</script>
+	</body>
+</html>
